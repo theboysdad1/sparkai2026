@@ -3,29 +3,847 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SparkAI 2026</title>
+<title>IFS Spark | Industrial AI Roadshow 2026 — sparkai2026.com</title>
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{min-height:100vh;display:flex;align-items:center;justify-content:center;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:linear-gradient(135deg,#0f0c29,#302b63,#24243e);color:#fff;overflow:hidden}
-.container{text-align:center;padding:2rem;max-width:600px}
-.logo{font-size:3.5rem;font-weight:800;margin-bottom:.5rem;background:linear-gradient(90deg,#76b852,#8DC26F);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.tagline{font-size:1.1rem;color:#aaa;margin-bottom:2rem;letter-spacing:.3em;text-transform:uppercase}
-.coming-soon{font-size:2rem;font-weight:300;margin-bottom:1.5rem;color:#e0e0e0}
-.description{font-size:1rem;color:#888;line-height:1.7;margin-bottom:2.5rem}
-.pulse{display:inline-block;width:12px;height:12px;background:#76b852;border-radius:50%;animation:pulse 2s ease-in-out infinite;margin-right:8px;vertical-align:middle}
-.status{font-size:.9rem;color:#76b852}
-@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(1.3)}}
-.glow{position:fixed;width:300px;height:300px;border-radius:50%;background:rgba(118,184,82,.08);filter:blur(80px);top:20%;left:60%;pointer-events:none}
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+  :root {
+    --ifs-purple: #6B2FA0;
+    --ifs-purple-dark: #4A1F70;
+    --ifs-purple-light: #9B6FCC;
+    --ifs-teal: #00A0B0;
+    --ifs-orange: #F26522;
+    --ifs-dark: #1A1A2E;
+    --ifs-darker: #0F0F1E;
+    --ifs-gray: #A0A0B8;
+    --ifs-light: #F4F4F8;
+    --gradient-hero: linear-gradient(135deg, #1A1A2E 0%, #2D1B4E 40%, #1B4F8A 100%);
+    --gradient-accent: linear-gradient(90deg, #6B2FA0, #00A0B0);
+    --shadow-card: 0 8px 32px rgba(107,47,160,0.10);
+    --radius: 16px;
+    --radius-sm: 10px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background: #FAFAFE; color: var(--ifs-dark);
+    line-height: 1.7; overflow-x: hidden;
+  }
+
+  /* NAV */
+  .nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(26,26,46,0.92); backdrop-filter: blur(20px);
+    padding: 0 2rem; height: 60px;
+    display: flex; align-items: center; justify-content: space-between;
+    border-bottom: 1px solid rgba(155,111,204,0.2);
+  }
+  .nav-logo { color: #fff; font-family: 'Space Grotesk'; font-weight: 700; font-size: 1.1rem; }
+  .nav-logo span { color: var(--ifs-teal); }
+  .nav-links { display: flex; gap: 1.5rem; }
+  .nav-links a { color: var(--ifs-gray); text-decoration: none; font-size: 0.82rem; font-weight: 500; transition: color 0.2s; }
+  .nav-links a:hover { color: #fff; }
+  @media (max-width: 768px) { .nav-links { display: none; } }
+
+  /* HERO */
+  .hero {
+    min-height: 92vh; display: flex; align-items: center; justify-content: center;
+    background: var(--gradient-hero); position: relative; overflow: hidden;
+    padding: 6rem 2rem 4rem;
+  }
+  .hero-content { max-width: 800px; text-align: center; position: relative; z-index: 2; }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 0.6rem;
+    background: rgba(255,255,255,0.06); border: 1px solid rgba(155,111,204,0.25);
+    border-radius: 50px; padding: 0.5rem 1.4rem; font-size: 0.82rem;
+    color: var(--ifs-purple-light); margin-bottom: 1.5rem; letter-spacing: 0.03em;
+  }
+  .pulse {
+    width: 8px; height: 8px; background: var(--ifs-teal); border-radius: 50%;
+    animation: pulse 2s ease-in-out infinite;
+  }
+  @keyframes pulse { 0%,100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(1.5); } }
+  .hero h1 {
+    font-family: 'Space Grotesk'; font-size: clamp(3rem, 8vw, 5.5rem);
+    font-weight: 800; line-height: 1.05; margin-bottom: 0.5rem;
+  }
+  .gradient-text {
+    background: var(--gradient-accent); -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .hero-sub {
+    font-size: clamp(0.95rem, 2vw, 1.1rem); color: rgba(255,255,255,0.55);
+    max-width: 640px; margin: 1rem auto 2rem; line-height: 1.7;
+  }
+  .hero-stats {
+    display: flex; justify-content: center; gap: 2.5rem; flex-wrap: wrap;
+    margin-top: 2rem;
+  }
+  .hero-stat { text-align: center; }
+  .hero-stat .num { font-family: 'Space Grotesk'; font-size: 1.6rem; font-weight: 700; color: #fff; }
+  .hero-stat .label { font-size: 0.75rem; color: var(--ifs-gray); text-transform: uppercase; letter-spacing: 0.08em; margin-top: 0.2rem; }
+
+  /* SECTIONS */
+  .section { padding: 5rem 2rem; max-width: 1200px; margin: 0 auto; }
+  .section-label {
+    font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.12em;
+    color: var(--ifs-purple); font-weight: 700; margin-bottom: 0.5rem;
+  }
+  .section-title {
+    font-family: 'Space Grotesk'; font-size: clamp(1.8rem, 4vw, 2.5rem);
+    font-weight: 700; margin-bottom: 0.8rem; color: var(--ifs-dark);
+  }
+  .section-desc {
+    font-size: 1.05rem; color: #555; max-width: 750px; margin-bottom: 2.5rem; line-height: 1.75;
+  }
+
+  /* EXCLUSIVE BADGE */
+  .invite-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--ifs-purple), var(--ifs-teal));
+    color: #fff; font-size: 0.72rem; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.14em;
+    padding: 0.4rem 1.2rem; border-radius: 50px; margin-bottom: 1.5rem;
+  }
+
+  /* ROUTE */
+  .route-section {
+    background: var(--gradient-hero); padding: 5rem 2rem;
+  }
+  .stop-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem; max-width: 1200px; margin: 0 auto;
+  }
+  .stop-card {
+    background: rgba(255,255,255,0.04); border: 1px solid rgba(155,111,204,0.15);
+    border-radius: var(--radius); padding: 1.8rem; transition: all 0.3s;
+    position: relative;
+  }
+  .stop-card:hover { border-color: rgba(155,111,204,0.35); transform: translateY(-3px); }
+  .stop-card.confirmed {
+    border-color: rgba(0,200,100,0.5); background: rgba(0,200,100,0.04);
+  }
+  .stop-card.finale {
+    border-color: var(--ifs-teal); background: rgba(0,160,176,0.06);
+    grid-column: 1 / -1;
+  }
+  .stop-emoji { font-size: 1.8rem; margin-bottom: 0.8rem; }
+  .stop-date { font-size: 0.78rem; color: var(--ifs-teal); font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.3rem; }
+  .stop-city { font-family: 'Space Grotesk'; font-size: 1.5rem; font-weight: 700; color: #fff; margin-bottom: 0.3rem; }
+  .stop-theme { font-size: 0.9rem; color: var(--ifs-purple-light); margin-bottom: 0.6rem; font-weight: 500; }
+  .stop-desc { font-size: 0.88rem; color: rgba(255,255,255,0.5); line-height: 1.65; }
+  .confirmed-badge {
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    background: rgba(0,200,100,0.15); border: 1px solid rgba(0,200,100,0.4);
+    color: #00C864; font-size: 0.7rem; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.1em;
+    padding: 0.3rem 0.9rem; border-radius: 50px; margin-bottom: 0.8rem;
+  }
+  .confirmed-badge::before {
+    content: "\2713"; font-weight: 900; font-size: 0.8rem;
+  }
+
+  /* PORTFOLIO */
+  .portfolio-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 1.5rem;
+  }
+  .portfolio-card {
+    background: #fff; border: 1px solid rgba(107,47,160,0.08);
+    border-radius: var(--radius); padding: 2rem;
+    box-shadow: var(--shadow-card); transition: all 0.3s;
+  }
+  .portfolio-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(107,47,160,0.15); }
+  .portfolio-icon { font-size: 2rem; margin-bottom: 0.8rem; }
+  .portfolio-card h3 { font-family: 'Space Grotesk'; font-size: 1.3rem; font-weight: 700; margin-bottom: 0.4rem; }
+  .role-tag {
+    display: inline-block; font-size: 0.72rem; font-weight: 600; text-transform: uppercase;
+    letter-spacing: 0.08em; color: var(--ifs-purple); background: rgba(107,47,160,0.08);
+    padding: 0.25rem 0.8rem; border-radius: 50px; margin-bottom: 0.8rem;
+  }
+  .portfolio-card p { font-size: 0.92rem; color: #555; line-height: 1.65; }
+  .portfolio-metrics { display: flex; flex-wrap: wrap; gap: 0.8rem; margin-top: 1.2rem; }
+  .metric {
+    font-size: 0.78rem; color: #666; background: var(--ifs-light);
+    padding: 0.4rem 0.8rem; border-radius: var(--radius-sm);
+  }
+  .metric span { font-weight: 700; color: var(--ifs-purple); }
+
+  /* AGENDA */
+  .agenda-grid {
+    display: grid; gap: 0; border-left: 3px solid var(--ifs-purple);
+    padding-left: 1.5rem; margin-top: 1rem;
+  }
+  .agenda-card {
+    padding: 1.2rem 0; border-bottom: 1px solid rgba(0,0,0,0.05);
+  }
+  .agenda-card:last-child { border-bottom: none; }
+  .agenda-time { font-family: 'Space Grotesk'; font-weight: 700; font-size: 0.85rem; color: var(--ifs-teal); margin-bottom: 0.2rem; }
+  .agenda-title { font-weight: 700; font-size: 1.05rem; margin-bottom: 0.3rem; }
+  .agenda-desc { font-size: 0.88rem; color: #666; line-height: 1.6; }
+
+  /* 3-SLIDE FORMAT */
+  .slide-format {
+    display: flex; gap: 1rem; margin: 1.5rem 0; flex-wrap: wrap;
+  }
+  .slide-box {
+    flex: 1; min-width: 200px; border-radius: var(--radius-sm);
+    padding: 1.3rem; text-align: center;
+  }
+  .slide-num { font-family: 'Space Grotesk'; font-weight: 700; font-size: 1.2rem; margin-bottom: 0.3rem; }
+  .slide-label { font-size: 0.88rem; font-weight: 500; }
+
+  /* RENAISSANCE CALLOUT */
+  .callout {
+    background: linear-gradient(135deg, rgba(107,47,160,0.04), rgba(0,160,176,0.04));
+    border: 1px solid rgba(107,47,160,0.1); border-left: 4px solid var(--ifs-purple);
+    border-radius: var(--radius-sm); padding: 1.5rem 2rem; margin-top: 2rem;
+  }
+  .callout h4 { font-family: 'Space Grotesk'; font-size: 1.05rem; margin-bottom: 0.5rem; color: var(--ifs-dark); }
+  .callout p { font-size: 0.92rem; color: #555; line-height: 1.65; }
+
+  /* BOOK CALLOUT */
+  .book-section {
+    background: var(--ifs-light); padding: 4rem 2rem;
+  }
+  .book-card {
+    max-width: 800px; margin: 0 auto;
+    background: #fff; border-radius: var(--radius); padding: 2.5rem;
+    box-shadow: var(--shadow-card); text-align: center;
+  }
+  .book-card h3 { font-family: 'Space Grotesk'; font-size: 1.4rem; margin-bottom: 0.8rem; }
+  .book-card p { font-size: 1rem; color: #555; line-height: 1.7; max-width: 600px; margin: 0 auto; }
+  .book-emoji { font-size: 2.5rem; margin-bottom: 1rem; }
+
+  /* REGISTER SECTION */
+  .register-section {
+    background: var(--gradient-hero); padding: 5rem 2rem;
+  }
+  .register-inner {
+    max-width: 1100px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start;
+  }
+  .register-text h2 {
+    font-family: 'Space Grotesk'; font-size: clamp(1.8rem, 4vw, 2.5rem);
+    font-weight: 700; color: #fff; margin-bottom: 1rem;
+  }
+  .register-text p {
+    font-size: 1.05rem; color: rgba(255,255,255,0.55); line-height: 1.7; margin-bottom: 1.5rem;
+  }
+  .register-text ul {
+    list-style: none; padding: 0;
+  }
+  .register-text ul li {
+    font-size: 0.92rem; color: rgba(255,255,255,0.7); padding: 0.4rem 0;
+    padding-left: 1.5rem; position: relative;
+  }
+  .register-text ul li::before {
+    content: "\2713"; position: absolute; left: 0;
+    color: var(--ifs-teal); font-weight: 700;
+  }
+  .register-form-wrap {
+    background: rgba(255,255,255,0.03); border: 1px solid rgba(155,111,204,0.2);
+    border-radius: var(--radius); padding: 2rem;
+  }
+  @media (max-width: 768px) {
+    .register-inner { grid-template-columns: 1fr; }
+  }
+
+  /* HUBSPOT FORM STYLING */
+  #hubspot-form-container .hs-form input[type="text"],
+  #hubspot-form-container .hs-form input[type="email"],
+  #hubspot-form-container .hs-form input[type="tel"],
+  #hubspot-form-container .hs-form input[type="number"],
+  #hubspot-form-container .hs-form textarea,
+  #hubspot-form-container .hs-form select {
+    background: rgba(255,255,255,0.06);
+    border: 1.5px solid rgba(155,111,204,0.3);
+    border-radius: 10px;
+    color: #fff;
+    padding: 0.7rem 1rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.92rem;
+    width: 100%;
+  }
+  #hubspot-form-container .hs-form input:focus,
+  #hubspot-form-container .hs-form textarea:focus,
+  #hubspot-form-container .hs-form select:focus {
+    border-color: var(--ifs-teal);
+    outline: none;
+  }
+  #hubspot-form-container .hs-form label {
+    color: rgba(255,255,255,0.8);
+    font-weight: 500;
+    font-size: 0.88rem;
+  }
+  #hubspot-form-container .hs-form .hs-button {
+    background: var(--gradient-accent);
+    color: #fff;
+    font-weight: 700;
+    font-size: 1rem;
+    border: none;
+    border-radius: 50px;
+    padding: 0.9rem 2.5rem;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    transition: all 0.3s;
+    box-shadow: 0 4px 20px rgba(107,47,160,0.3);
+  }
+  #hubspot-form-container .hs-form .hs-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(107,47,160,0.4);
+  }
+  #hubspot-form-container .hs-form .hs-error-msgs {
+    color: #F26522;
+    font-size: 0.82rem;
+  }
+  #hubspot-form-container .hs-form select option {
+    background: var(--ifs-dark);
+    color: #fff;
+  }
+  #hubspot-form-container .hs-form .hs-richtext p {
+    color: rgba(255,255,255,0.6);
+    font-size: 0.85rem;
+  }
+  #hubspot-form-container .hs-form fieldset {
+    max-width: 100% !important;
+  }
+  #hubspot-form-container .hs-form .hs-form-field {
+    margin-bottom: 1rem;
+  }
+  #hubspot-form-container .hs-form .input {
+    margin-right: 0 !important;
+  }
+  #hubspot-form-container .hs-form .hs-input {
+    width: 100% !important;
+  }
+
+  /* VOTING SECTION */
+  .vote-section {
+    background: var(--gradient-hero); padding: 5rem 2rem;
+    border-top: 1px solid rgba(155,111,204,0.15);
+  }
+  .vote-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.2rem; max-width: 1000px; margin: 0 auto;
+  }
+  .vote-card {
+    background: rgba(255,255,255,0.04); border: 1px solid rgba(155,111,204,0.15);
+    border-radius: var(--radius); padding: 1.5rem; transition: all 0.3s;
+    text-align: center;
+  }
+  .vote-card:hover { border-color: rgba(155,111,204,0.35); transform: translateY(-2px); }
+  .vote-card.voted { border-color: var(--ifs-teal); background: rgba(0,160,176,0.08); }
+  .vote-city-emoji { font-size: 2rem; margin-bottom: 0.5rem; }
+  .vote-city-name { font-family: 'Space Grotesk'; font-size: 1.2rem; font-weight: 700; color: #fff; margin-bottom: 0.8rem; }
+  .vote-bar-wrap {
+    background: rgba(255,255,255,0.06); border-radius: 50px; height: 8px;
+    margin-bottom: 0.6rem; overflow: hidden;
+  }
+  .vote-bar {
+    height: 100%; background: var(--gradient-accent); border-radius: 50px;
+    transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1); width: 0%;
+  }
+  .vote-count { font-size: 0.8rem; color: var(--ifs-gray); margin-bottom: 0.8rem; }
+  .vote-btn {
+    display: inline-block; padding: 0.55rem 1.5rem;
+    background: rgba(255,255,255,0.06); border: 1.5px solid rgba(155,111,204,0.3);
+    color: #fff; font-weight: 600; font-size: 0.85rem; border-radius: 50px;
+    cursor: pointer; transition: all 0.3s; font-family: 'Inter', sans-serif;
+  }
+  .vote-btn:hover { background: var(--gradient-accent); border-color: transparent; transform: translateY(-1px); }
+  .vote-btn:disabled {
+    opacity: 0.5; cursor: not-allowed; transform: none;
+    background: rgba(255,255,255,0.03); border-color: rgba(155,111,204,0.15);
+  }
+  .vote-thanks {
+    display: none; font-size: 0.85rem; color: var(--ifs-teal); font-weight: 600;
+    margin-top: 0.5rem;
+  }
+  .vote-thanks.show { display: block; }
+
+  /* CTA BTN (reusable) */
+  .cta-btn {
+    display: inline-block; padding: 0.9rem 2.5rem;
+    background: var(--gradient-accent); color: #fff;
+    font-weight: 700; font-size: 1rem; border-radius: 50px;
+    text-decoration: none; transition: all 0.3s;
+    box-shadow: 0 4px 20px rgba(107,47,160,0.3);
+  }
+  .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(107,47,160,0.4); }
+
+  /* FOOTER */
+  .footer {
+    background: var(--ifs-darker); color: var(--ifs-gray); text-align: center;
+    padding: 2rem; font-size: 0.8rem;
+  }
+
+  @media (max-width: 768px) {
+    .stop-grid { grid-template-columns: 1fr; }
+    .portfolio-grid { grid-template-columns: 1fr; }
+    .slide-format { flex-direction: column; }
+    .hero-stats { gap: 1.5rem; }
+    .vote-grid { grid-template-columns: 1fr; }
+  }
 </style>
 </head>
 <body>
-<div class="glow"></div>
-<div class="container">
-<div class="logo">SparkAI</div>
-<div class="tagline">2026</div>
-<div class="coming-soon">Coming Soon</div>
-<p class="description">Something powerful is being built.<br>Stay tuned for what's next.</p>
-<div><span class="pulse"></span><span class="status">In Development</span></div>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-logo">IFS <span>Spark</span></div>
+  <div class="nav-links">
+    <a href="#route">Route</a>
+    <a href="#portfolio">The Conversations</a>
+    <a href="#agenda">Agenda</a>
+    <a href="#participate">Your Role</a>
+    <a href="#book">Takeaway</a>
+    <a href="#vote">Vote</a>
+    <a href="#register">Register</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">
+      <div class="pulse"></div>
+      By Invitation Only — Summer / Fall 2026
+    </div>
+    <h1><span class="gradient-text">Spark</span></h1>
+    <p style="font-family:'Space Grotesk';font-size:clamp(1.2rem,3vw,1.8rem);color:rgba(255,255,255,0.85);font-weight:600;margin-bottom:0.3rem;">
+      The IFS Industrial AI Roadshow
+    </p>
+    <p class="hero-sub">
+      An exclusive evening series for senior operations and technology leaders in your region. Four intimate roundtable dinners across America's industrial heartland — where 8–12 local CXOs benchmark strategies, share real results, and prepare for the era of limitless industry alongside peers who face the same challenges you do.
+    </p>
+    <div class="hero-stats">
+      <div class="hero-stat"><div class="num">5 Cities</div><div class="label">Intimate Stops</div></div>
+      <div class="hero-stat"><div class="num">8–12</div><div class="label">CXOs Per Room</div></div>
+      <div class="hero-stat"><div class="num">Evening</div><div class="label">Dinner &amp; Discussion</div></div>
+      <div class="hero-stat"><div class="num">Oct 12–16, 2026</div><div class="label">→ Unleashed Orlando</div></div>
+    </div>
+    <a href="#register" class="cta-btn" style="margin-top:2rem;">Confirm Your Seat →</a>
+  </div>
+  <div style="position:absolute;inset:0;overflow:hidden;pointer-events:none;">
+    <svg width="100%" height="100%" style="opacity:0.12;">
+      <defs><radialGradient id="g1"><stop offset="0%" stop-color="#00A0B0"/><stop offset="100%" stop-color="transparent"/></radialGradient></defs>
+      <circle cx="15%" cy="30%" r="120" fill="url(#g1)"><animate attributeName="cy" values="30%;35%;30%" dur="8s" repeatCount="indefinite"/></circle>
+      <circle cx="80%" cy="60%" r="90" fill="url(#g1)"><animate attributeName="cy" values="60%;55%;60%" dur="6s" repeatCount="indefinite"/></circle>
+      <circle cx="50%" cy="80%" r="150" fill="url(#g1)"><animate attributeName="cx" values="50%;52%;50%" dur="10s" repeatCount="indefinite"/></circle>
+    </svg>
+  </div>
+</section>
+
+<!-- WHAT TO EXPECT -->
+<section class="section">
+  <div class="invite-badge">You've Been Selected</div>
+  <div class="section-title">This Isn't a Conference. It's a Conversation.</div>
+  <div class="section-desc">
+    IFS Spark is a curated evening roundtable and dinner designed for leaders who are past the "what is AI?" question and ready for the "how do we actually do this?" conversation. No keynote marathons. No expo halls. Just 8–12 peers from non-competing industries — <strong>local leaders in your region</strong> — sharing what's working, what isn't, and what's next under Chatham House Rules.
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.2rem;">
+    <div style="background:#fff;border-radius:var(--radius);padding:1.5rem;box-shadow:var(--shadow-card);text-align:center;">
+      <div style="font-size:2rem;margin-bottom:0.5rem;">🤝</div>
+      <div style="font-weight:700;margin-bottom:0.3rem;">Peer-Led</div>
+      <div style="font-size:0.85rem;color:#666;">80% peer discussion and industry trends. 20% IFS perspective. Zero hard selling.</div>
+    </div>
+    <div style="background:#fff;border-radius:var(--radius);padding:1.5rem;box-shadow:var(--shadow-card);text-align:center;">
+      <div style="font-size:2rem;margin-bottom:0.5rem;">🔒</div>
+      <div style="font-weight:700;margin-bottom:0.3rem;">Chatham House Rules</div>
+      <div style="font-size:0.85rem;color:#666;">What's said in the room stays in the room. Real talk requires real trust.</div>
+    </div>
+    <div style="background:#fff;border-radius:var(--radius);padding:1.5rem;box-shadow:var(--shadow-card);text-align:center;">
+      <div style="font-size:2rem;margin-bottom:0.5rem;">🎯</div>
+      <div style="font-weight:700;margin-bottom:0.3rem;">Local Leaders</div>
+      <div style="font-size:0.85rem;color:#666;">Senior operations and technology executives from your region — non-competing industries, real shared challenges.</div>
+    </div>
+    <div style="background:#fff;border-radius:var(--radius);padding:1.5rem;box-shadow:var(--shadow-card);text-align:center;">
+      <div style="font-size:2rem;margin-bottom:0.5rem;">🚀</div>
+      <div style="font-weight:700;margin-bottom:0.3rem;">Path to Unleashed</div>
+      <div style="font-size:0.85rem;color:#666;">Spark attendees reconvene at IFS Unleashed 2026 in Orlando — a dedicated networking social to continue the conversation with peers from all four cities.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ROUTE MAP -->
+<section class="route-section" id="route">
+  <div class="section-label" style="text-align:center;color:var(--ifs-teal);">The Journey</div>
+  <div class="section-title" style="text-align:center;color:#fff;">Five Cities. One Conversation.</div>
+  <div class="section-desc" style="color:rgba(255,255,255,0.55);text-align:center;margin:0 auto 3rem;max-width:700px;">Each stop brings together local industry leaders around a different operational challenge — but the real value is the peer conversation. Pick the city closest to you and join the discussion with leaders in your backyard.</div>
+
+  <div class="stop-grid">
+    <div class="stop-card confirmed">
+      <div class="confirmed-badge">CONFIRMED</div>
+      <div class="stop-emoji">🏙️</div>
+      <div class="stop-date">Wednesday, June 10, 2026 — Confirmed</div>
+      <div class="stop-city">Chicago, IL</div>
+      <div class="stop-theme">Launch: The Full Industrial AI Conversation</div>
+      <div class="stop-desc">The kickoff. All three challenge areas on the table — automation, getting AI to production, and operational visibility. Hear how peers across industries are tackling all of them. The broadest conversation starts here.</div>
+    </div>
+    <div class="stop-card">
+      <div class="stop-emoji">🛢️</div>
+      <div class="stop-date">June 2026 — Date TBD</div>
+      <div class="stop-city">Houston, TX</div>
+      <div class="stop-theme">Spotlight: Real-Time Visibility &amp; Predictive Operations</div>
+      <div class="stop-desc">Energy capital meets industrial AI. How are organizations getting a real-time picture across assets, people, and operations — and using AI to predict problems before they become outages? Peers share what's actually working in the field.</div>
+    </div>
+    <div class="stop-card">
+      <div class="stop-emoji">🏛️</div>
+      <div class="stop-date">August 2026 — Date TBD</div>
+      <div class="stop-city">Philadelphia / DC Corridor</div>
+      <div class="stop-theme">Spotlight: Automating Complex Workflows</div>
+      <div class="stop-desc">Your teams are buried in manual, multi-system work. How are peers deploying autonomous digital workers to handle it — and where do they draw the line? A candid conversation about what's automatable and what still needs a human.</div>
+    </div>
+    <div class="stop-card">
+      <div class="stop-emoji">🏭</div>
+      <div class="stop-date">September 2026 — Date TBD</div>
+      <div class="stop-city">Minneapolis, MN</div>
+      <div class="stop-theme">Spotlight: Turning Supply Chains Into a Strategic Advantage</div>
+      <div class="stop-desc">Logistics costs keep climbing. Freight networks are a black box. How are peers using AI to turn their supply chains from cost centers into competitive weapons? Real numbers, real lessons, from the operators who've done it.</div>
+    </div>
+    <div class="stop-card finale">
+      <div class="stop-emoji">🚀</div>
+      <div class="stop-date">Grand Finale — October 12–16, 2026</div>
+      <div class="stop-city">Orlando, FL — IFS Unleashed 2026</div>
+      <div class="stop-theme">Where AI Meets Industry at Scale</div>
+      <div class="stop-desc">Spark attendees from all four cities come together for a dedicated networking social at IFS Unleashed. Same peer-driven spirit, bigger room — reconnect with the leaders you met on the road, meet Spark alumni from other stops, and continue the conversation on the global stage.</div>
+    </div>
+  </div>
+</section>
+
+<!-- VOTE FOR NEXT STOP -->
+<section class="vote-section" id="vote">
+  <div class="section-label" style="text-align:center;color:var(--ifs-teal);">Help Us Choose</div>
+  <div class="section-title" style="text-align:center;color:#fff;">Vote for the Next Stop</div>
+  <div class="section-desc" style="color:rgba(255,255,255,0.55);text-align:center;margin:0 auto 3rem;max-width:700px;">We're adding a fifth city to the route. Tell us where Spark should land next — one vote per person. The city with the most votes joins the confirmed lineup.</div>
+
+  <div class="vote-grid" id="voteGrid">
+    <div class="vote-card" data-city="Atlanta">
+      <div class="vote-city-emoji">🍑</div>
+      <div class="vote-city-name">Atlanta, GA</div>
+      <div class="vote-bar-wrap"><div class="vote-bar" id="bar-Atlanta"></div></div>
+      <div class="vote-count" id="count-Atlanta">0 votes</div>
+      <button class="vote-btn" onclick="castVote('Atlanta')">Vote</button>
+      <div class="vote-thanks" id="thanks-Atlanta">Thanks for voting!</div>
+    </div>
+    <div class="vote-card" data-city="Nashville">
+      <div class="vote-city-emoji">🎸</div>
+      <div class="vote-city-name">Nashville, TN</div>
+      <div class="vote-bar-wrap"><div class="vote-bar" id="bar-Nashville"></div></div>
+      <div class="vote-count" id="count-Nashville">0 votes</div>
+      <button class="vote-btn" onclick="castVote('Nashville')">Vote</button>
+      <div class="vote-thanks" id="thanks-Nashville">Thanks for voting!</div>
+    </div>
+    <div class="vote-card" data-city="Denver">
+      <div class="vote-city-emoji">🏔️</div>
+      <div class="vote-city-name">Denver, CO</div>
+      <div class="vote-bar-wrap"><div class="vote-bar" id="bar-Denver"></div></div>
+      <div class="vote-count" id="count-Denver">0 votes</div>
+      <button class="vote-btn" onclick="castVote('Denver')">Vote</button>
+      <div class="vote-thanks" id="thanks-Denver">Thanks for voting!</div>
+    </div>
+    <div class="vote-card" data-city="Dallas">
+      <div class="vote-city-emoji">🤠</div>
+      <div class="vote-city-name">Dallas, TX</div>
+      <div class="vote-bar-wrap"><div class="vote-bar" id="bar-Dallas"></div></div>
+      <div class="vote-count" id="count-Dallas">0 votes</div>
+      <button class="vote-btn" onclick="castVote('Dallas')">Vote</button>
+      <div class="vote-thanks" id="thanks-Dallas">Thanks for voting!</div>
+    </div>
+    <div class="vote-card" data-city="Detroit">
+      <div class="vote-city-emoji">🚗</div>
+      <div class="vote-city-name">Detroit, MI</div>
+      <div class="vote-bar-wrap"><div class="vote-bar" id="bar-Detroit"></div></div>
+      <div class="vote-count" id="count-Detroit">0 votes</div>
+      <button class="vote-btn" onclick="castVote('Detroit')">Vote</button>
+      <div class="vote-thanks" id="thanks-Detroit">Thanks for voting!</div>
+    </div>
+    <div class="vote-card" data-city="Boston">
+      <div class="vote-city-emoji">🎓</div>
+      <div class="vote-city-name">Boston, MA</div>
+      <div class="vote-bar-wrap"><div class="vote-bar" id="bar-Boston"></div></div>
+      <div class="vote-count" id="count-Boston">0 votes</div>
+      <button class="vote-btn" onclick="castVote('Boston')">Vote</button>
+      <div class="vote-thanks" id="thanks-Boston">Thanks for voting!</div>
+    </div>
+  </div>
+</section>
+
+<!-- THE CONVERSATIONS -->
+<section class="section" id="portfolio">
+  <div class="section-label">The Conversations</div>
+  <div class="section-title">Three Challenges. Real Answers.</div>
+  <div class="section-desc">Every Spark roundtable is built around three operational challenges that keep coming up in our conversations with CXOs across industries. These aren't product demos — they're peer discussions anchored in what organizations like yours are actually doing today.</div>
+
+  <div class="portfolio-grid">
+    <div class="portfolio-card">
+      <div class="portfolio-icon">🤖</div>
+      <h3>"We're drowning in manual work<br>and can't scale our teams fast enough."</h3>
+      <span class="role-tag">Automating Complex Operations</span>
+      <p>Your best people are trapped in repetitive, multi-system workflows — order processing, supplier coordination, field dispatch. Hear how peers are deploying autonomous digital workers that handle these workflows end-to-end, giving 90,000+ hours back to field teams and returning $3M/year at scale. We'll discuss what's working, what isn't, and where the line between automation and human judgment really is.</p>
+      <div class="portfolio-metrics">
+        <div class="metric"><span>$3M/yr</span> ROI peers are seeing</div>
+        <div class="metric"><span>90K hrs</span> given back to teams</div>
+        <div class="metric"><span>10–14 wks</span> first workflow live</div>
+      </div>
+    </div>
+    <div class="portfolio-card">
+      <div class="portfolio-icon">🚀</div>
+      <h3>"We can't get AI out of the lab<br>and into the hands of our workers."</h3>
+      <span class="role-tag">From Concept to Production — Fast</span>
+      <p>You've run the pilots. Maybe they worked, maybe they didn't. Either way, the gap between "AI proof of concept" and "AI in production at 3 AM when the power goes out" is where most organizations stall. Hear how peers are co-building custom AI solutions — built with frontline workers, not for them — and deploying in weeks, not years. A global distillery went from 38% emergency repairs to predictive maintenance, projecting savings in the millions annually. A utility restored power 40% faster in its first deployment.</p>
+      <div class="portfolio-metrics">
+        <div class="metric"><span>40%</span> faster restoration</div>
+        <div class="metric"><span>Weeks</span> to production</div>
+        <div class="metric"><span>Co-built</span> with frontline workers</div>
+      </div>
+    </div>
+    <div class="portfolio-card">
+      <div class="portfolio-icon">🧠</div>
+      <h3>"We have no real-time picture<br>of what's actually happening."</h3>
+      <span class="role-tag">Visibility Across Operations &amp; Supply Chain</span>
+      <p>Logistics costs are rising. Asset performance is opaque. Your operations team is stitching together dashboards from six different systems and still flying blind. Hear how peers are using AI to turn supply chains from cost centers into strategic advantages — cutting logistics costs 15%, automating 90% of data entry — and unifying real-time visibility across people, assets, and processes in a single operational picture.</p>
+      <div class="portfolio-metrics">
+        <div class="metric"><span>15%</span> logistics cost reduction</div>
+        <div class="metric"><span>90%</span> data entry automated</div>
+        <div class="metric"><span>Real-time</span> unified visibility</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout">
+    <h4>The Renaissance Framework</h4>
+    <p>Inspired by Zack Kass's <em>The Next Renaissance</em> — AI isn't replacing human potential, it's expanding it. The question isn't what AI <em>can</em> do, but what we <em>allow</em> it to do. Every Spark conversation centers on the same idea: how Industrial AI frees people from invisible work so they can do what only humans can.</p>
+  </div>
+</section>
+
+<!-- AGENDA -->
+<section class="section" id="agenda" style="background:var(--ifs-light);">
+  <div class="section-label">Your Evening</div>
+  <div class="section-title">The Agenda</div>
+  <div class="section-desc">A focused evening designed to maximize peer exchange — from cocktails through dinner. No death-by-PowerPoint. No expo halls. Just the conversations that matter, with time to go deeper over dinner.</div>
+
+  <div class="agenda-grid">
+    <div class="agenda-card">
+      <div class="agenda-time">5:30 PM CT — 6:00 PM CT</div>
+      <div class="agenda-title">Arrival &amp; Cocktail Reception</div>
+      <div class="agenda-desc">Drinks, introductions, and a first look at where you stand vs. your peers on AI readiness — survey results displayed anonymously on screen as the room fills.</div>
+    </div>
+    <div class="agenda-card">
+      <div class="agenda-time">6:00 PM CT — 6:20 PM CT</div>
+      <div class="agenda-title">Welcome: Why This Room, Why Now</div>
+      <div class="agenda-desc">Setting the context. Chatham House Rules. This is your space to benchmark, share, and learn from peers — not a sales session. Why the operators in this room are the ones who will define what Industrial AI actually looks like.</div>
+    </div>
+    <div class="agenda-card">
+      <div class="agenda-time">6:20 PM CT — 6:50 PM CT</div>
+      <div class="agenda-title">The Industrial AI Landscape — What's Real</div>
+      <div class="agenda-desc">Cutting through the noise. Where industrial AI is actually delivering results today — not in labs, but on factory floors, in distribution centers, and at 3 AM when the power goes out. Real stories of organizations that moved from pilot to production and what they learned along the way.</div>
+    </div>
+    <div class="agenda-card">
+      <div class="agenda-time">6:50 PM CT — 7:30 PM CT</div>
+      <div class="agenda-title">Peer Sessions — Your Fellow CXOs Present</div>
+      <div class="agenda-desc">Attendees share their AI journey using a simple 3-slide format. No polish required. Facilitated peer discussion follows each — this is consistently rated the most valuable part of the evening. The best moments happen when someone says "we tried that too."</div>
+    </div>
+    <div class="agenda-card">
+      <div class="agenda-time">7:30 PM CT — 7:45 PM CT</div>
+      <div class="agenda-title">Break &amp; Hands-On Demos</div>
+      <div class="agenda-desc">Three hands-on stations: see an AI-optimized supply chain in action, watch a digital worker handle a live workflow, and explore real customer use cases. Touch the technology behind the conversations.</div>
+    </div>
+    <div class="agenda-card">
+      <div class="agenda-time">7:45 PM CT — 8:15 PM CT</div>
+      <div class="agenda-title">Spotlight Deep Dive (Rotates by City)</div>
+      <div class="agenda-desc">Each city spotlights a different challenge area — with real customer proof points and a facilitated discussion on how peers in the room are approaching the same problem. Not a product demo. A peer conversation anchored in what's actually working.</div>
+    </div>
+    <div class="agenda-card">
+      <div class="agenda-time">8:15 PM CT — 8:45 PM CT</div>
+      <div class="agenda-title">Roundtable: Where Do We Go From Here?</div>
+      <div class="agenda-desc">Facilitated discussion. What resonated? What's the biggest blocker in your organization? Preview of IFS Unleashed 2026 in Orlando. Every attendee leaves with a defined next step and an invitation to continue the conversation.</div>
+    </div>
+    <div class="agenda-card">
+      <div class="agenda-time">8:45 PM CT — On</div>
+      <div class="agenda-title">Hosted Dinner &amp; Networking</div>
+      <div class="agenda-desc">The conversation continues over a private dinner. Relaxed, off-the-record — where the best insights and real connections happen. No agenda. Just the people you just spent three hours with, good food, and the conversations that matter.</div>
+    </div>
+  </div>
+</section>
+
+<!-- YOUR ROLE: 3-SLIDE FORMAT -->
+<section class="section" id="participate">
+  <div class="section-label">Your Role in the Room</div>
+  <div class="section-title">Come Ready to Share</div>
+  <div class="section-desc">
+    This is a peer AI session — every voice makes the conversation richer. We encourage all attendees to present using a simple 3-slide format. No decks to polish. No rehearsal needed. Just three honest slides that give the room something real to react to.
+  </div>
+
+  <div class="slide-format">
+    <div class="slide-box" style="background:rgba(107,47,160,0.06);">
+      <div class="slide-num" style="color:var(--ifs-purple);">Slide 1</div>
+      <div class="slide-label">Who We Are &amp;<br>Our AI Challenge</div>
+    </div>
+    <div class="slide-box" style="background:rgba(0,160,176,0.06);">
+      <div class="slide-num" style="color:var(--ifs-teal);">Slide 2</div>
+      <div class="slide-label">What We Did &amp;<br>What We Learned</div>
+    </div>
+    <div class="slide-box" style="background:rgba(242,101,34,0.06);">
+      <div class="slide-num" style="color:var(--ifs-orange);">Slide 3</div>
+      <div class="slide-label">Where We're<br>Going Next</div>
+    </div>
+  </div>
+
+  <div class="callout" style="border-left-color:var(--ifs-teal);">
+    <h4>Why This Format Works</h4>
+    <p>Three slides keeps it honest. No vendor names required. No corporate polish expected. This format is what generates the richest peer discussion — because it gives everyone in the room a shared framework to compare notes and challenge assumptions. The best Spark conversations happen when someone says "we tried that too, and here's what actually happened."</p>
+  </div>
+</section>
+
+<!-- BOOK GIVEAWAY -->
+<section class="book-section" id="book">
+  <div class="book-card">
+    <div class="book-emoji">📖</div>
+    <h3>Your Takeaway — <em>The Next Renaissance</em></h3>
+    <p>Every attendee leaves with a copy of <strong><em>The Next Renaissance: AI and the Expansion of Human Potential</em></strong> by Zack Kass, former Head of GTM at OpenAI. The book that frames AI not as a threat to jobs but as the greatest expansion of human capability since the original Renaissance — and the shared language to take this narrative back to your boardroom.</p>
+  </div>
+</section>
+
+<!-- REGISTER (HubSpot Form) -->
+<section class="register-section" id="register">
+  <div class="register-inner">
+    <div class="register-text">
+      <h2>Request Your Seat</h2>
+      <p>Each Spark stop is capped at 12 executives. If you've received this invitation, there's a seat with your name on it. Register below and we'll send you everything you need to arrive ready.</p>
+      <ul>
+        <li>Complimentary dinner and premium drinks</li>
+        <li>Copy of <em>The Next Renaissance</em> by Zack Kass</li>
+        <li>Priority invitation to IFS Unleashed 2026 networking event</li>
+        <li>Peer connections that last beyond the evening</li>
+        <li>No sales pitch — Chatham House Rules apply</li>
+      </ul>
+    </div>
+    <div class="register-form-wrap">
+      <div id="hubspot-form-container"></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<div class="footer">
+  <p>IFS Spark — An IFS Unleashed Series | Industrial AI Roadshow 2026</p>
+  <p style="margin-top:0.3rem;opacity:0.6;">Questions? Contact <a href="mailto:heather.campbell@ifs.com" style="color:var(--ifs-teal);text-decoration:none;">Heather Campbell</a> or <a href="mailto:jeremiehicks@gmail.com" style="color:var(--ifs-teal);text-decoration:none;">Jeremie Hicks</a></p>
+  <p style="margin-top:0.5rem;opacity:0.4;font-size:0.72rem;">Powered by sparkai2026.com</p>
 </div>
+
+<!-- HUBSPOT FORM EMBED -->
+<script charset="utf-8" type="text/javascript" src="//js-eu1.hsforms.net/forms/embed/v2.js"></script>
+<script>
+  hbspt.forms.create({
+    region: "eu1",
+    portalId: "146014973",
+    formId: "7b2aca97-48fb-442b-acef-bf3483fbf7ac",
+    target: "#hubspot-form-container",
+    css: "",
+    onFormReady: function(form) {
+      var utmSource = form.querySelector('input[name="utm_source"]');
+      if (utmSource) utmSource.value = 'sparkai2026';
+      var utmMedium = form.querySelector('input[name="utm_medium"]');
+      if (utmMedium) utmMedium.value = 'website';
+      var utmCampaign = form.querySelector('input[name="utm_campaign"]');
+      if (utmCampaign) utmCampaign.value = 'spark-roadshow-2026';
+    }
+  });
+</script>
+
+<!-- VOTING LOGIC -->
+<script>
+(function() {
+  var cities = ['Atlanta', 'Nashville', 'Denver', 'Dallas', 'Detroit', 'Boston'];
+  var storageKey = 'sparkVotes';
+  var votedKey = 'sparkVoted';
+
+  function getVotes() {
+    try {
+      var data = localStorage.getItem(storageKey);
+      if (data) return JSON.parse(data);
+    } catch(e) {}
+    var initial = {};
+    cities.forEach(function(c) { initial[c] = 0; });
+    return initial;
+  }
+
+  function saveVotes(votes) {
+    localStorage.setItem(storageKey, JSON.stringify(votes));
+  }
+
+  function hasVoted() {
+    return localStorage.getItem(votedKey) === 'true';
+  }
+
+  function getVotedCity() {
+    return localStorage.getItem('sparkVotedCity') || null;
+  }
+
+  function renderVotes() {
+    var votes = getVotes();
+    var maxVotes = Math.max.apply(null, cities.map(function(c) { return votes[c] || 0; }));
+    if (maxVotes === 0) maxVotes = 1;
+
+    cities.forEach(function(city) {
+      var count = votes[city] || 0;
+      var pct = (count / maxVotes) * 100;
+      var bar = document.getElementById('bar-' + city);
+      var countEl = document.getElementById('count-' + city);
+      if (bar) bar.style.width = pct + '%';
+      if (countEl) countEl.textContent = count + (count === 1 ? ' vote' : ' votes');
+    });
+
+    if (hasVoted()) {
+      var votedCity = getVotedCity();
+      var buttons = document.querySelectorAll('.vote-btn');
+      buttons.forEach(function(btn) { btn.disabled = true; });
+
+      if (votedCity) {
+        var card = document.querySelector('.vote-card[data-city="' + votedCity + '"]');
+        if (card) card.classList.add('voted');
+        var thanks = document.getElementById('thanks-' + votedCity);
+        if (thanks) thanks.classList.add('show');
+      }
+    }
+  }
+
+  window.castVote = function(city) {
+    if (hasVoted()) return;
+    var votes = getVotes();
+    votes[city] = (votes[city] || 0) + 1;
+    saveVotes(votes);
+    localStorage.setItem(votedKey, 'true');
+    localStorage.setItem('sparkVotedCity', city);
+    renderVotes();
+  };
+
+  // Initialize on load
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', renderVotes);
+  } else {
+    renderVotes();
+  }
+})();
+</script>
+
+<!-- NAV SMOOTH SCROLL -->
+<script>
+document.querySelectorAll('.nav-links a').forEach(function(link) {
+  link.addEventListener('click', function(e) {
+    e.preventDefault();
+    var target = document.querySelector(link.getAttribute('href'));
+    if (target) {
+      var y = target.getBoundingClientRect().top + window.pageYOffset - 80;
+      window.scrollTo({ top: y, behavior: 'smooth' });
+    }
+  });
+});
+</script>
+
 </body>
 </html>
